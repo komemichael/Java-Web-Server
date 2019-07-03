@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Logged In</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="description" content="Demo project">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#sidebar").hide();
+				$("#nav-elem").hide();
+			    $( "#datepicker" ).datepicker();
+			    $( "#datepicker1" ).datepicker();
+			    $("#sidebaropener").click(function(){
+			    	$("#sidebar").toggle(function(){
+			    		$('#sidebarimage').slideToggle();
+			    	});
+			    });
+			    $(".hovercard").hover(function(){
+			    	$(this).addClass('w3-card-4').addClass('w3-round-large');
+			    }).mouseleave(function(){
+			    	$(this).removeClass('w3-card-4').removeClass('w3-round-large');
+			    });
+			    $("#nav-more").click(function(){
+			    	$("#nav-elem").toggle(function(){
+			    		var navelem = document.getElementById("nav-elem");
+				    	if (navelem.style.visibility == "block") {
+				    		document.getElementById("nav-more").innerHTML = 
+				    		'<strong>More <span class="glyphicon glyphicon-option-vertical"></span></strong>';
+				    	}
+				    	else
+				    	{
+				    		console.log("here");
+				    		document.getElementById("nav-more").innerHTML = 
+				    		'<strong>Less  <span class="glyphicon glyphicon-option-vertical"></span></strong>';
+				    	}
+			    	});
+			    });
+			});
+		</script>
+
+		<script>
+			var app = angular.module('myApp', []);
+
+        	app.controller('myCtrl', function($scope, $http) 
+			{  $http.get("nonutility.php")
+			   .then(function(responseX)
+			   {       
+			       $scope.responseX = responseX.data;  
+			   });
+			   $http.get("utility.php")
+			   .then(function(responseY)
+			   {      
+			       $scope.responseY = responseY.data;
+			   });
+			});
+		</script>
+	</head>
+
+	<body ng-app="myApp">
+		<!-- HEADER of Document -->
+		<div class="w3-top w3-padding w3-grey w3-card-4">
+			<header  id="">
+				<nav >
+					<div class="w3-bar w3-mobile">
+					  <a href="#" id="sidebaropener" class="w3-bar-item w3-button w3-hover-shadow">
+					  	<strong><span class="glyphicon glyphicon-menu-hamburger"></span></strong>
+					  </a>
+					  <a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+					  	<span class="w3-hide-small"><strong>Kome</strong></span>
+					  	<span class="w3-hide-medium w3-hide-large" ><img src="images/kome.jpg" style=" height:30px; width: 40px"></span>
+					  </a>
+					  <a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+					  	<span class="w3-hide-small"><strong>Jeremy</strong></span>
+					  	<span class="w3-hide-medium w3-hide-large" ><img src="images/jeremys.jpg" style=" height:30px; width: 40px"></span>
+					  </a>
+					  <div id="nav-elem">
+						  <a href="#" class="w3-bar-item w3-button w3-hover-shadow" id="nav-elem">
+						  	<span class="w3-hide-small"><strong>Alex</strong></span>
+						  	<span class="w3-hide-medium w3-hide-large" ><img src="images/alex.jpg" style=" height:30px; width: 40px"></span>
+						  </a>
+						  <a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+						  	<span class="w3-hide-small"><strong>Hans</strong></span>
+						  	<span class="w3-hide-medium w3-hide-large" ><img src="images/hans.jpg" style=" height:30px; width: 40px"></span>
+						  </a>
+						  <a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+						  	<span class="w3-hide-small"><strong>JeremyD</strong></span>
+						  	<span class="w3-hide-medium w3-hide-large" ><img src="images/jeremyd.jpg" style=" height:30px; width: 40px"></span>
+						  </a>
+						  <a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+						  	<span class="w3-hide-small"><strong>Mark</strong></span>
+						  	<span class="w3-hide-medium w3-hide-large" ><img src="images/kome.jpg" style=" height:30px; width: 40px"></span>
+						  </a>
+						</div>
+					  <a href="#" class="w3-bar-item w3-button w3-hover-shadow" id="nav-more" ">
+					  	<strong>More <span class="glyphicon glyphicon-option-vertical"></span></strong>
+					  </a>
+
+					  <div class="w3-right">
+					  	<a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+					  		<span class="glyphicon glyphicon-user"></span>
+					  	</a>
+					  	<div style="display: inline-block;" class="w3-hide-small">
+					  		<input type="text" class="w3-round" >
+					  	</div>
+					  	<a href="#" class="w3-bar-item w3-button w3-hover-shadow">
+					  		<span class="glyphicon glyphicon-search"></span>
+					  	</a>
+					  </div>
+					</div>
+				</nav>
+
+				<div class="w3-modal">
+					<div class="w3-modal-content w3-animate-zoom w3-card-4">
+						
+					</div>
+				</div>
+			</header>	
+		</div>	
+
+		<!-- body  -->
+		<div class="w3-sand"  style="padding-top: 70px">
+			<h1 class="w3-xxlarge w3-text-white ">
+				<span class= "w3-round w3-padding w3-black w3-opacity-min"><b>SILVERSTONE</b></span> 
+				<span class="w3-hide-small w3-text-blue-grey">GuysHouse</span>
+			</h1>
+
+			<!-- Sidebar -->
+			<div style="padding: 50px">
+
+				<!-- BODY of Document -->
+				<div class="w3-row w3-flat-asbestos w3-round">
+					<!-- Side bar -->
+					<div class=" w3-col m3 l2">
+						<div class=" w3-containter">
+							<div class="w3-col s3 m2 l2" >  
+								<div class="w3-containter w3-hide-small w3-padding w3-col s3 m2 l2" id="sidebarimage" >
+									<img src="images/silverstone.jpg" class="w3-round" style="height: 500px; width: 100%">
+								</div>   
+					            <div class="w3-containter w3-col s3 m2 l2">
+					            	<span>...</span>
+					            	<div  id="sidebar" class="w3-sidebar w3-bar-block w3-round w3-dark-grey" style="height: 500px;">  
+						            	<a href="index.html" class="w3-bar-item w3-button w3-hover-sand w3-hover-shadow w3-margin-bottom w3-center " >
+						            		<strong>Home</strong>
+						            	</a>
+										<a href="about.html" class="w3-bar-item w3-button w3-hover-sand w3-margin-bottom w3-hover-shadow w3-center">
+						            		<strong>About</strong>
+						            	</a>
+						              	<a href="#" class="w3-bar-item w3-button w3-hover-sand w3-margin-bottom w3-hover-shadow w3-center">
+						            		<strong>Booking</strong>
+						            	</a>
+						              	<a href="#" class="w3-bar-item w3-button w3-hover-sand w3-margin-bottom w3-hover-shadow w3-center">
+						            		<strong>IVCF</strong>
+						            	</a>
+						              	<a href="gallery.html" class="w3-bar-item w3-button w3-hover-sand w3-margin-bottom w3-hover-shadow w3-center">
+						            		<strong>Gallery</strong>
+						            	</a> 
+						            </div>
+					            </div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Body of the body -->
+					<div class="w3-col m6 l7">
+						<div style="padding: 16px" class="w3-containter">
+							<div class="hovercard w3-padding">
+								<div id="tabpills" class="w3-bar w3-center w3-light-grey w3-round">
+									<button id="hometab" class="w3-button w3-bar-item pilltab" onclick="opentab('home','hometab')">Home</button>
+									<div class="w3-dropdown-hover" id="utiltab" class="pilltab">
+										<button  class="w3-button w3-bar-item">Bills Info</button>
+										<div class="w3-dropdown-content w3-bar-block w3-border">
+											<button id="utiltab" class="w3-button w3-bar-item pilltab" onclick="opentab('util','utiltab')">Utility Info</button>
+											<button id="utiltab" class="w3-button w3-bar-item pilltab" onclick="opentab('nonutil','utiltab')">Non-Utility Info</button>
+										</div>
+									</div>
+									<button id="contacttab" class="w3-button w3-bar-item pilltab" onclick="opentab('contact','contacttab')">Contacts and Info</button>
+									<button id="enternonutiltab" class="w3-button w3-bar-item pilltab" onclick="opentab('enternonutil','enternonutiltab')">Enter non Util</button>
+									<button id="enterutiltab" class="w3-button w3-bar-item pilltab" onclick="opentab('enterutil','enterutiltab')">Enter Util</button>
+								</div>
+
+								<div>
+									<div id="home" class="pill">
+										<br>
+										<h4>Welcome</h4>
+										<p>Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse c.</p>
+									</div>
+									<div id="utilandnontil">
+										<div id="nonutil" class="pill">
+											<br>
+											<br>
+											<div class="hovercard" ng-controller="myCtrl" style="overflow-y:scroll; height: 500px">
+												<table class="w3-table w3-striped w3-hoverable w3-text-black" >
+													<tr class="w3-dark-grey">
+														<th>Date</th>
+														<th>Name of Bill</th>
+														<th>Amount</th>
+														<th>Amount by 6</th>
+														<th>Notes (Pay-to, etc)</th>
+													</tr>
+													<tr ng-repeat="x in responseX">
+														<td>{{x.date}}</td>
+														<td>{{x.namebill}}</td>
+														<td>{{x.amount}}</td>
+														<td>{{x.amountbysix}}</td>
+														<td>{{x.notes}}</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<div id="util" class="pill">
+											<br>
+											<br>
+											<div class="hovercard" ng-controller="myCtrl" style="overflow-y:scroll; height: 500px">
+												<table class="w3-table w3-striped w3-hoverable w3-text-black" >
+													<tr class="w3-dark-grey">
+														<th>Date</th>
+														<th>Month</th>
+														<th>Bill</th>
+														<th>Amount</th>
+														<th>Amount/person</th>
+														<th>Pay-To</th>
+													</tr>
+													<tr ng-repeat="y in responseY">
+														<td>{{y.date}}</td>
+														<td>{{y.month}}</td>
+														<td>{{y.billtype}}</td>
+														<td>{{y.totalamount}}</td>
+														<td>{{y.kome}}</td>
+														<td>{{y.payto}}</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div id="contact" class="pill">
+										<br>
+										<h4>Contact</h4>
+										<p>Lorem ioident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									</div>
+									<div id="enternonutil" class="pill w3-text-black">
+										<br>
+										<h4>Enter Non-Utility Bill</h4>
+										<hr>
+										<form action="nonutil.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;" method="POST">
+											<input id="datepicker" ng-model="date" class="w3-input w3-round" type="text" name="date" placeholder="date">
+											<br>
+											<input ng-model="namebill" class="w3-input w3-round" type="text" name="namebill" placeholder="namebill">
+											<br>
+											<input ng-model="amount" class="w3-input w3-round" type="text" name="amount" placeholder="amount">
+											<br>
+											<input ng-model="notes" class="w3-input w3-round" type="text" name="note" placeholder="notes">
+											<br>
+											<input type="checkbox" class="w3-check" name="">
+											<input type="reset">
+											<button class="w3-button w3-round" onclick="setTimeout(function(){ alert('Successfuly added')}, 3000)">Submit</button>
+										</form>
+									</div>
+
+									<div id="enterutil" class="pill w3-text-black">
+										<br>
+										<h4>Enter Utility Bill</h4>
+										<hr>
+										<form action="util.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;" method="POST">
+											<input id="datepicker1" ng-model="date" class="w3-input w3-round" type="text" name="date" placeholder="date">
+											<br>
+											<select class="w3-select" name="month">
+												<option value="" disabled selected>Select what month</option>
+												<option value="January">January</option>
+												<option value="February">February</option>
+												<option value="March">March</option>
+												<option value="April">April</option>
+												<option value="May">May</option>
+												<option value="June">June</option>
+												<option value="July">July</option>
+												<option value="August">August</option>
+												<option value="September">September</option>
+												<option value="October">October</option>
+												<option value="November">November</option>
+												<option value="December">December</option>
+											</select>
+											<br>
+											<br>
+											<input ng-model="namebill" class="w3-input w3-round" type="text" name="billtype" placeholder="Type of Bill">
+											<br>
+											<input ng-model="amount" class="w3-input w3-round" type="text" name="totalamount" placeholder="Amount">
+											<br>
+											<input list="purchasers" name="payto" class="w3-input" placeholder="Pay-to">
+											<datalist id="purchasers">
+												<option value="Kome">
+												<option value="Smith">
+												<option value="Dyck">
+												<option value="Alex">
+												<option value="Hans">
+												<option value="Mark">
+											</datalist>
+											<br>
+											<input type="checkbox" class="w3-check" name="">
+											<input type="reset">
+											<button class="w3-button w3-round" onclick="setTimeout(function(){ alert('Successfuly added')}, 3000)">Submit</button>
+										</form>
+									</div>
+
+								</div>
+							</div>
+							<hr>
+							<div>
+								<div class="w3-hide-small w3-padding hovercard">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+							</div>
+							<div id="xml" class="w3-containter w3-padding hovercard"></div>
+						</div>	
+					</div>
+
+					<!-- side news and updates -->
+					<div class=" w3-col m3 l3 w3-hide-small">
+						<div style="padding: 16px" class="w3-containter">
+							<div class="w3-card-4 w3-margin-bottom w3-round">
+								<header class="w3-containter w3-center w3-dark-grey w3-padding w3-round">
+									<h3>Lorem</h3>
+								</header>
+								<p class="w3-padding">
+									<i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi .</i>
+								</p>
+							</div>
+							<br>
+							<div class="w3-card-4 w3-margin-bottom w3-round">
+								<header class="w3-containter w3-center w3-dark-grey w3-padding w3-round">
+									<h3>Ipsum</h3>
+								</header>
+								<p class="w3-padding">
+									<i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labor magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laisi .</i>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER of Document -->
+		<footer>
+			<nav class="w3-button w3-bar w3-grey w3-round w3-padding" style="border: solid;">
+			    <ul class="w3-row">
+			        <li class="w3-bar-item w3-col s4 m4 l3 w3-center">
+			        	<ul style="list-style-type: none">
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap</a></li>
+			        	</ul>
+			        </li><!--
+			     --><li class="w3-bar-item w3-col s4 m4 l3 w3-center">			     		
+			     		<ul style="list-style-type: none">
+			        	    <li><a onclick="document.getElementById('w3-modal-contact').style.display='block'" href="#">
+			     			Contacts
+			     			</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap</a></li>
+			        	</ul>
+			     	</li><!--
+			     --><li class="w3-bar-item w3-col s4 m4 l3 w3-center">
+			        	<ul style="list-style-type: none">
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		Terms and Privacy
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap</a></li>
+			        	</ul>
+			        </li><!--
+			     --><li class="w3-bar-item w3-col s4 m4 l3 w3-center">
+			     		<ul style="list-style-type: none">
+			        	    <li><a onclick="document.getElementById('w3-modal-contact').style.display='block'" href="#">
+			     			Feedback
+			     			</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap
+			        		</a></li>
+			        	    <li><a onclick="document.getElementById('w3-modal-sitemap').style.display='block'" href="#">
+			        		SiteMap</a></li>
+			        	</ul>
+			     	</li>
+			    </ul>
+			</nav>
+
+			<div class="w3-modal" id="w3-modal-sitemap">
+        		<div class="w3-modal-content w3-indigo w3-round">
+        			<header class="w3-grey w3-containter">
+        				<span class="w3-button w3-red w3-dispaly-topright" 
+        					onclick="document.getElementById('w3-modal-sitemap').style.display='none'">
+        					&times;</span>
+        				<h4>SiteMap</h4>
+        			</header>
+        			<div class="w3-containter">
+        				<p class="w3-padding">
+        					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi .
+        				</p>
+        			</div>			        			
+        		</div>
+        	</div>
+
+        	<div class="w3-modal" id="w3-modal-contact">
+        		<div class="w3-modal-content w3-indigo w3-round">
+        			<header class="w3-grey w3-containter">
+        				<span class="w3-button w3-red w3-dispaly-topright" 
+        					onclick="document.getElementById('w3-modal-contact').style.display='none'">
+        					&times;</span>
+        				<h4>SiteMap</h4>
+        			</header>
+        			<div class="w3-containter">
+        				<p class="w3-padding">
+        					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        				</p>
+        			</div>			        			
+        		</div>
+        	</div>
+		</footer>
+	</body>
+
+
+	<script> 
+
+
+		function modal(element){
+			document.getElementById("images").src =  element.src;
+			document.getElementById("modal").style.display = 'block';
+		}
+
+		function opentab(tab, pilltabhead){
+			var pills = document.getElementsByClassName("pill");
+			var pilltab = document.getElementsByClassName('pilltab');
+
+			var tab = document.getElementById(tab);
+			for (var i = 0; i < pills.length; i++) {
+				pills[i].style.display = 'none';
+				pilltab[i].classList.remove('w3-dark-grey');
+			}
+			tab.style.display = 'block';
+			document.getElementById(pilltabhead).classList.add('w3-dark-grey');
+		}
+
+	</script>
+</html>
