@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author Owner
+ * @author Owner Komemichael
  */
 public final class HttpRequest implements Runnable{
     
